@@ -18,7 +18,7 @@ module.exports.createnewlisting = async (req, res) => {
     newlisting.image = {url,filename}
     await newlisting.save();
     req.flash("success", "New Listing is added!");
-    res.redirect("/listing");
+    res.redirect("/listings");
   }
 
 module.exports.showlisting =async (req, res, next) => {
@@ -26,9 +26,9 @@ module.exports.showlisting =async (req, res, next) => {
     const data = await Listing.findById(id).populate({path:"reviews",populate:{path:"author"}}).populate("owner");
     if (!data) {
       req.flash("error", "Listing does not exist!");
-      return res.redirect("/listing");
+      return res.redirect("/listings");
     }
-    res.render("listing/show", { data, Api_token: process.env.Api_token });
+    res.render("listings/show", { data, Api_token: process.env.Api_token });
   }
 
 
@@ -51,7 +51,7 @@ module.exports.updatelisting = async (req, res) => {
   await listing.save();
   }
   req.flash("success", "Listing is updated!");
-  res.redirect(`/listing/${id}`);
+  res.redirect(`/listings/${id}`);
 }
 
 
@@ -60,5 +60,5 @@ module.exports.deletelisting = async (req, res) => {
   let { id } = req.params;
   await Listing.findByIdAndDelete(id);
   req.flash("success", "Listing is deleted!");
-  res.redirect("/listing");
+  res.redirect("/listings");
 }

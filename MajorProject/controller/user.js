@@ -14,7 +14,7 @@ module.exports.signup = async(req,res)=>{
         return next(err)
       }
       req.flash("success","Welcome to wonder lust!");
-      res.redirect("/listing");
+      res.redirect("/listings");
     })
 
   }catch(err){
@@ -32,7 +32,7 @@ module.exports.loginform = (req,res)=>{
 
 module.exports.login = async(req,res)=>{
     req.flash("success","Welcome to wonderbacklust.")
-    let redirecturl = res.locals.redirectUrl || "/listing"
+    let redirecturl = res.locals.redirectUrl || "/listings"
     res.redirect(redirecturl)
  }
 
@@ -43,6 +43,6 @@ module.exports.logout = (req,res,next)=>{
         return next(err)
       }
       req.flash("success","You are logged out!")
-      res.redirect("/listing")
+      res.redirect("/listings")
     })
 }
