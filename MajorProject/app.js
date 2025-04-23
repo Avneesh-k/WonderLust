@@ -29,7 +29,7 @@ const { listingSchema, reviewSchema } = require("./Schema.js");
 const Listing = require("./models/listing.js");
 const Review = require("./models/review.js");
 
-const dburl = process.env.ATLASDB_Url
+const dburl = process.env.ATLASDB_URL
 // Database connection
 main().then(() => console.log("MongoDB connected"))
      .catch(err => console.log("Connection error:", err));
