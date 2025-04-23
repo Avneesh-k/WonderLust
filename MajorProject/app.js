@@ -103,9 +103,9 @@ const validateReview = (req, res, next) => {
 };
 
 // Routes
-// app.get("/", (req, res) => {
-//   res.send("This is the root page.");
-// });
+app.get("/", (req, res) => {
+  res.render("index.ejs")
+});
 
 
 //get request for getting the signup form
